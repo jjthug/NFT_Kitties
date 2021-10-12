@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <link rel = "stylesheet" href = "assets/css/style.css">
+        <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <script src="assets/bootstrap/js/popper.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <div class="container p-5" style="margin-top: 12vh;margin-bottom: 10vh;">
+            <div align="center">
+            <h1 class="c-white">Kitties-Factory</h1>
+            <p class="c-white">Create your custom Kitty</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 catBox m-2 light-b-shadow">
+        <div class="ears">
+            <div class="ear left_ear" ></div>
+            <div class="ear right_ear" ></div>
+        </div>
+        <div id="body">
+
+            <div class="eyes">
+                <div class="eye">
+                    <div class="pupil"></div>
+                </div>
+                <div class="eye">
+                    <div class="pupil"></div>
+                </div>
+            </div>
+
+            <div class="mouth">
+                
+            </div>
+        </div>
+        <br>
+        <div class="dnaDiv" id="catDNA">
+            <b>
+                DNA:
+                <!-- Colors -->
+                 <span id="dnabody"></span>
+                 <span id="dnaeye"></span>
+                 <span id="dnapupil"></span>
+                 <span id="dnamouth"></span>
+                
+                 <!-- Cattributes -->
+                 <span id="dnashape"></span>
+                 <span id="dnadecoration"></span>
+                 <span id="dnadecorationMid"></span>
+                 <span id="dnadecorationSides"></span>
+                 <span id="dnadanimation"></span>
+                 <span id="dnaspecial"></span>
+            </b>
+        </div>
+        </div>
+        <div class="col-lg-7 cattributes m-2 light-b-shadow">
+
+            <!-- Cat colors -->
+<div id="catColors">
+    <div class="form-group">
+        <label for="formControlRange"><b>Head and ears</b><span class="badge badge-dark ml-2" id="headcode"></span></label>
+        <input type="range" min="10" max="98" class="form-control-range" id="bodycolor">
+    </div>
+
+    <div class="form-group">
+        <label for="formControlRange"><b>Eyes</b><span class="badge badge-dark ml-2" id="headcode2"></span></label>
+        <input type="range" min="10" max="98" class="form-control-range" id="eyeColor">
+    </div>
+    <div class="form-group">
+        <label for="formControlRange"><b>Pupils</b><span class="badge badge-dark ml-2" id="headcode3"></span></label>
+        <input type="range" min="10" max="98" class="form-control-range" id="pupilColor">
+    </div>
+    <div class="form-group">
+        <label for="formControlRange"><b>Mouth</b><span class="badge badge-dark ml-2" id="headcode4"></span></label>
+        <input type="range" min="10" max="98" class="form-control-range" id="mouthColor">
+    </div>
+</div>
+
+
+</div>
+
+</div>
+<br>
+
+</div>
+
+
+
+</div>
+
+
+    </body>
+    <script src="assets/js/colors.js"></script>
+    <script src="assets/js/catSettings.js"></script>
+    <script src="assets/js/catFactory.js"></script>
+    </html>

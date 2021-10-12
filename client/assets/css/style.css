@@ -1,0 +1,64 @@
+#body{
+    background-color:#efe2a2;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /* margin: 50px; */
+}
+
+.eyes{
+    position:relative;
+    top: 30px;
+    display: flex;
+}
+
+.eye{
+    background-color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 25px;
+    position: relative;
+}
+
+.pupil{
+    background-color:  rgb(221, 27, 205);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin: 10px;
+}
+
+.ears{
+    position: relative;
+}
+
+.ear{
+    border-radius: 10px;
+    background-color:#efe2a2;
+    height: 100px;
+    width: 100px;
+    border-radius: 70% 0;
+    position: absolute;
+}
+
+.left_ear{
+    transform: scale(1,-1);
+    left: 0;
+}
+
+.right_ear{
+    left: 100;
+}
+
+.mouth{
+    /* border-radius: 10px; */
+    background-color:rgb(228, 23, 23);
+    height: 20px;
+    width: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 150px;
+    left:65px;
+}
