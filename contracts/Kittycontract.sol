@@ -74,13 +74,14 @@ contract Kittycontract is IERC721, Ownable {
 
     }
 
-    function getKitty(uint256 _id) external view returns (
+    function getKitty(uint256 _id) internal view returns (
         uint256 genes,
         uint256 birthTime,
         uint256 mumId,
-        uint256 dadId,
-        uint256 generation,
-        address owner
+        uint256 dadId,        
+        address owner,
+        uint256 generation
+
     ) {
         Kitty storage kitty = kitties[_id];
         genes = kitty.genes;
@@ -206,6 +207,75 @@ contract Kittycontract is IERC721, Ownable {
             size := extcodesize(_addr)
         }
         return (size > 0);
+    }
+
+    function _breed (uint256 _dadId, uint256 _mumId) public returns(uint256){
+        require(kittyIndextoOwner[_dadId] == msg.sender);
+        require(kittyIndextoOwner[_mumId] == msg.sender);
+        (uint256 dadDna,,,,,uint256 DadGeneration) = getKitty(_dadId);
+        (uint256 mumDna,,,,,uint256 MumGeneration) = getKitty(_dadId);
+
+        uint256 newDna = _mixDna(dadDna, mumDna);
+
+        uint256 kidGen = 0;
+
+        if(DadGeneration > MumGeneration) {
+            kidGen = DadGeneration + 1;
+            kidGen /= 2;
+        }
+        else if (MumGeneration > DadGeneration){
+            kidGen = MumGeneration + 1;
+            kidGen /= 2;
+        }
+        else {
+            kidGen = MumGeneration + 1;
+        }
+
+        createKitty (_mumId, _dadId, kidGen, newDna, msg.sender); 
+
+
+
+
+
+
+        
+    }
+
+    function _mixDna (uint256 _dadDna, uint256 _mumDna) internal returns(uint256){
+        uint256[4] memory geneArray;
+
+        uint8 random = uint8(block.timestamp % 255); // gameable, not safe
+        uint256 i;
+        uint256 result;
+        uint256 index = 3;
+
+        for( i=1; i<=128 ; i=i*2){
+            if(i & random !=0){
+                geneArray[index] = uint8(_mumDna%100);
+            }
+            else{
+                geneArray[index] = uint8(_dadDna%100);
+            }
+
+            _mumDna = _mumDna/100;
+            _dadDna = _dadDna/100;
+
+            index--;
+        }
+
+        uint256 newGene;
+        for(i=1; i<=3 ; i++){
+            newGene = newGene + geneArray[i];
+
+            if(i != 7 ){
+                newGene = newGene * 100;
+            }
+
+        }
+
+        return newGene;
+
+
     }
 
 }
